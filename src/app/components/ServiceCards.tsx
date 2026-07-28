@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import {
   Home as HomeIcon,
   Map,
@@ -82,11 +82,14 @@ const cardVariants: Variants = {
 };
 
 export default function ServiceCards() {
+  // Hareket azaltma tercihinde kartlar animasyonsuz, doğrudan görünür gelir
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
       className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
       variants={containerVariants}
-      initial="hidden"
+      initial={reduceMotion ? false : "hidden"}
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
@@ -95,8 +98,9 @@ export default function ServiceCards() {
         return (
           <motion.div
             key={service.title}
-            variants={cardVariants}
-            whileHover={{ scale: 1.03 }}
+            data-animate
+            variants={reduceMotion ? undefined : cardVariants}
+            whileHover={reduceMotion ? undefined : { scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className={`group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-shadow duration-300 border border-slate-100 flex flex-col ${
               service.wide ? "lg:col-span-2" : ""
@@ -109,12 +113,17 @@ export default function ServiceCards() {
                 alt={service.title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                // Geniş kart iki sütuna yayıldığı için daha büyük bir genişlik ister
+                sizes={
+                  service.wide
+                    ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw"
+                    : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                }
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-              {/* Görselin üzerinde yüzen altın ikon rozeti */}
+              {/* Görselin üzerinde yüzen altın ikon rozeti (dekoratif) */}
               <div className="absolute bottom-4 left-4 w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-sm flex items-center justify-center text-[#C5A253] shadow-lg">
-                <Icon className="h-6 w-6" />
+                <Icon className="h-6 w-6" aria-hidden="true" />
               </div>
             </div>
 

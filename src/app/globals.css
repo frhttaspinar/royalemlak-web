@@ -1,6 +1,32 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-playfair);
 }
 
+/* Klavye ile gezinirken her odaklanabilir öğede görünür bir odak halkası kalsın */
+:focus-visible {
+  outline: 2px solid #0f172a;
+  outline-offset: 2px;
+}
+
+/*
+  Hareket azaltma tercihi: süslü geçişler ve sürekli tekrarlayan animasyonlar
+  devre dışı kalır, içerik her durumda tam görünür olur.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

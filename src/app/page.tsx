@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
+import { BUSINESS } from "./lib/site";
 import ServiceCards from "./components/ServiceCards";
 import BlogCards from "./components/BlogCards";
 import Header from "./components/Header";
@@ -20,12 +20,12 @@ export default function Home() {
         {/* 1. Hero Section (Hero09) */}
         <Hero09
           title="ROYAL EMLAK VE GAYRİMENKUL"
-          description="Amasya'da Hayalinizdeki Evi Keşfedin. Royal Emlak güvencesiyle satılık ve kiralık en seçkin portföyler. Yeni yaşam alanınıza ilk adımı atın."
+          description="Amasya’da hayalinizdeki evi keşfedin. Royal Emlak güvencesiyle satılık ve kiralık en seçkin portföyler. Yeni yaşam alanınıza ilk adımı atın."
           heroImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400&auto=format&fit=crop"
-          heroAlt="Modern minimalist house with clean architecture"
-          bottomTitle="Amasya'nın"
+          heroAlt="Amasya’da satılık modern mimarili müstakil ev"
+          bottomTitle="Amasya’nın"
           bottomTitleLine2="En Güvenilir Emlak Ofisi."
-          bottomText="Şeyhcui Mahallesi'ndeki ofisimizde, şeffaf ve profesyonel hizmet anlayışımızla sizleri çay kahve içmeye bekliyoruz."
+          bottomText="Şeyhcui Mahallesi’ndeki ofisimizde, şeffaf ve profesyonel hizmet anlayışımızla sizleri çay kahve içmeye bekliyoruz."
           animation="subtle"
         />
 
@@ -36,11 +36,11 @@ export default function Home() {
               <AnimatedAboutImage />
               <div className="order-1 md:order-2">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                  Amasya'da,<br /> En Güvenilir Emlak Ve Gayrimenkul Ofisi.
+                  Amasya’da,<br /> En Güvenilir Emlak ve Gayrimenkul Ofisi.
                 </h2>
-                <div className="w-20 h-1 bg-slate-900 mb-8"></div>
+                <div className="w-20 h-1 bg-slate-900 mb-8" aria-hidden="true"></div>
                 <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                  Yavuz Selim Bülbül yönetiminde, 7 yılı aşkın süredir dürüstlük, şeffaflık ve üst düzey müşteri memnuniyeti ilkesiyle Amasya'da gayrimenkul sektörüne yön veriyoruz.
+                  Yavuz Selim Bülbül yönetiminde, 7 yılı aşkın süredir dürüstlük, şeffaflık ve üst düzey müşteri memnuniyeti ilkesiyle Amasya’da gayrimenkul sektörüne yön veriyoruz.
                 </p>
                 <p className="text-lg text-slate-600 leading-relaxed mb-10">
                   Gayrimenkul yatırımlarını yalnızca mülk alımı olarak değil, portföy optimizasyonu olarak ele alıyoruz. Pazar dinamiklerini, mimari değeri ve gelecek projeksiyonlarını birleştirerek benzersiz bir danışmanlık deneyimi sunuyoruz.
@@ -81,7 +81,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
                 Profesyonel Hizmetlerimiz
               </h2>
-              <div className="w-20 h-1 bg-slate-900 mx-auto mb-6"></div>
+              <div className="w-20 h-1 bg-slate-900 mx-auto mb-6" aria-hidden="true"></div>
               <p className="text-lg text-slate-600">
                 Amasya ve çevresinde gayrimenkul ihtiyaçlarınıza yönelik kapsamlı ve profesyonel çözümler üretiyoruz.
               </p>
@@ -96,9 +96,9 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                Emlak Blogu
+                Gayrimenkul Rehberi
               </h2>
-              <div className="w-20 h-1 bg-slate-900 mx-auto mb-6"></div>
+              <div className="w-20 h-1 bg-slate-900 mx-auto mb-6" aria-hidden="true"></div>
               <p className="text-lg text-slate-600">
                 Gayrimenkul dünyasındaki en güncel gelişmeler, yatırım tavsiyeleri ve piyasa analizleriyle doğru kararlar almanıza yardımcı oluyoruz.
               </p>
@@ -121,16 +121,17 @@ export default function Home() {
                 <Image
                   src="/royallogo.png"
                   alt="Royal Emlak ve Gayrimenkul"
-                  width={320}
-                  height={120}
+                  width={288}
+                  height={192}
+                  sizes="(max-width: 768px) 192px, 288px"
                   className="h-16 md:h-24 w-auto object-contain"
                 />
               </div>
               <p className="text-slate-600 mb-10 max-w-md text-lg leading-relaxed">
-                Amasya&apos;da güvenilir ve şeffaf gayrimenkul danışmanlığının adresi. Hayalinizdeki mülke ulaşmak için bizimle iletişime geçin.
+                Amasya’da güvenilir ve şeffaf gayrimenkul danışmanlığının adresi. Hayalinizdeki mülke ulaşmak için bizimle iletişime geçin.
               </p>
 
-              <div className="space-y-6 mb-10">
+              <address className="not-italic space-y-6 mb-10">
                 <a
                   href="https://maps.google.com/?q=Şeyhcui,+Poyraz+Sk.+No:+11/A,+Amasya"
                   target="_blank"
@@ -138,21 +139,25 @@ export default function Home() {
                   className="flex items-start group"
                 >
                   <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-slate-100 mr-4 group-hover:bg-slate-200 transition-colors">
-                    <MapPin className="h-5 w-5 text-slate-900" />
+                    <MapPin className="h-5 w-5 text-slate-900" aria-hidden="true" />
                   </span>
-                  <p className="text-slate-700 text-lg pt-1.5 group-hover:text-slate-900 transition-colors">
-                    Şeyhcui, Poyraz Sk. No: 11/A, Amasya
-                  </p>
+                  <span className="text-slate-700 text-lg pt-1.5 group-hover:text-slate-900 transition-colors">
+                    {BUSINESS.street}, {BUSINESS.region}
+                  </span>
                 </a>
                 <div className="flex items-center">
                   <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-slate-100 mr-4">
-                    <Phone className="h-5 w-5 text-slate-900" />
+                    <Phone className="h-5 w-5 text-slate-900" aria-hidden="true" />
                   </span>
-                  <a href="tel:+905443440520" className="text-slate-900 hover:text-slate-600 font-bold text-2xl tracking-tight transition-colors">
-                    0544 344 05 20
+                  <a
+                    href={`tel:${BUSINESS.phone}`}
+                    aria-label={`Telefon ile arayın: ${BUSINESS.phoneDisplay}`}
+                    className="text-slate-900 hover:text-slate-600 font-bold text-2xl tracking-tight transition-colors"
+                  >
+                    {BUSINESS.phoneDisplay}
                   </a>
                 </div>
-              </div>
+              </address>
 
               <ContactActions />
             </div>

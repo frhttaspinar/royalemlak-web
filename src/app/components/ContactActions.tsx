@@ -2,16 +2,17 @@
 
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { BUSINESS } from "../lib/site";
 
 export default function ContactActions() {
   return (
     <div className="flex flex-wrap gap-4">
       {/* Instagram — Orijinal gradient renklerinde ikon */}
       <motion.a
-        href="https://www.instagram.com/royalemlak05/"
+        href={BUSINESS.instagram}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Instagram Hesabımız"
+        aria-label="Instagram hesabımız"
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
         transition={{ type: "spring", stiffness: 300, damping: 18 }}
@@ -27,6 +28,7 @@ export default function ContactActions() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          aria-hidden="true"
           className="group-hover:scale-110 transition-transform duration-300"
         >
           <defs>
@@ -46,7 +48,7 @@ export default function ContactActions() {
 
       {/* Google Değerlendirme — Siyah premium tasarım */}
       <motion.a
-        href="https://share.google/bEYhtgSnrT8vqj5Te"
+        href={BUSINESS.google}
         target="_blank"
         rel="noopener noreferrer"
         whileHover={{ scale: 1.04, y: -2 }}
@@ -54,7 +56,7 @@ export default function ContactActions() {
         transition={{ type: "spring", stiffness: 300, damping: 18 }}
         className="group relative flex items-center gap-3 overflow-hidden px-7 py-4 rounded-full font-medium text-white bg-slate-900 shadow-md hover:shadow-xl hover:bg-slate-800 transition-all duration-300 border border-slate-800"
       >
-        <Star className="relative h-5 w-5 text-amber-400 fill-amber-400 group-hover:scale-110 transition-transform duration-300" />
+        <Star className="relative h-5 w-5 text-amber-400 fill-amber-400 group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
         <span className="relative tracking-wide">Google&apos;da Bizi Değerlendirin</span>
       </motion.a>
     </div>

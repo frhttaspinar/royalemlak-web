@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { BUSINESS } from "../lib/site";
 
 type BlogPost = {
   id: number;
@@ -95,19 +95,23 @@ const cardVariants: Variants = {
 };
 
 export default function BlogCards() {
+  // Hareket azaltma tercihinde kartlar animasyonsuz, doğrudan görünür gelir
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
       className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
       variants={containerVariants}
-      initial="hidden"
+      initial={reduceMotion ? false : "hidden"}
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
     >
       {blogPosts.map((post) => (
         <motion.div
           key={post.id}
-          variants={cardVariants}
-          whileHover={{ scale: 1.03 }}
+          data-animate
+          variants={reduceMotion ? undefined : cardVariants}
+          whileHover={reduceMotion ? undefined : { scale: 1.03 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-shadow duration-300 border border-slate-100 flex flex-col h-full"
         >
@@ -131,14 +135,16 @@ export default function BlogCards() {
             <p className="text-slate-600 mb-6 line-clamp-3 text-sm md:text-base flex-grow">
               {post.excerpt}
             </p>
+            {/* Ayrı blog sayfası bulunmadığı için CTA doğrudan WhatsApp danışma hattına gider */}
             <a
-              href="https://wa.me/905443440520"
+              href={BUSINESS.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`WhatsApp üzerinden danışın: ${post.title}`}
               className="inline-flex items-center text-slate-900 font-semibold hover:text-[#C5A253] transition-colors mt-auto"
             >
-              Daha Fazla Bilgi
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              Bu Konuda Danışın
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </a>
           </div>
         </motion.div>

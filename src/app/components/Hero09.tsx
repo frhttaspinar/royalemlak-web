@@ -1,11 +1,9 @@
 'use client'
 
 import * as React from 'react'
+import Image from 'next/image'
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
-import { Search } from 'lucide-react'
-import { Playfair_Display } from 'next/font/google'
-
-const playfair = Playfair_Display({ subsets: ['latin'], display: 'swap' })
+import { playfair } from '../lib/fonts'
 
 export interface Hero09Props {
   title: string
@@ -83,7 +81,7 @@ function Reveal({
   if (!active) return <div className={className}>{children}</div>
 
   return (
-    <motion.div variants={variants ?? item} className={className}>
+    <motion.div data-animate variants={variants ?? item} className={className}>
       {children}
     </motion.div>
   )
@@ -118,12 +116,14 @@ export default function Hero09({
     </p>
   )
 
-  const searchElement = null;
-
   const mediaElement = heroImage && (
     <div className={`relative mx-auto w-full max-w-7xl px-2 sm:px-4 lg:px-6 mt-2`}>
+      {/*
+        LCP görseli: next/image ile optimize edilir, sabit en-boy oranı
+        sayesinde layout shift (CLS) oluşmaz.
+      */}
       <div
-        className={`relative w-full flex justify-center items-center`}
+        className={`relative w-full aspect-[16/11] sm:aspect-video`}
         style={{
           WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)',
           WebkitMaskComposite: 'source-in',
@@ -131,11 +131,15 @@ export default function Hero09({
           maskComposite: 'intersect'
         }}
       >
-        <img
+        <Image
           src={heroImage}
           alt={heroAlt}
-          decoding="async"
-          className={`w-full aspect-[16/11] sm:aspect-video object-cover object-center`}
+          fill
+          priority
+          fetchPriority="high"
+          quality={65}
+          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 95vw, 1280px"
+          className="object-cover object-center"
         />
       </div>
     </div>
@@ -181,7 +185,6 @@ export default function Hero09({
         >
           {titleElement}
           {descriptionElement}
-          {searchElement}
         </Reveal>
 
         <Reveal active={animate} variants={mediaItem} className="w-full">
