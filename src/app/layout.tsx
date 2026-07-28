@@ -7,13 +7,13 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://royalemlakamasya.com.tr"),
+  metadataBase: new URL("https://www.royalemlakamasya.com"),
   title: "Royal Emlak ve Gayrimenkul | Amasya'nın En Güvenilir Emlak Rehberi",
   description: "Amasya merkezli Royal Emlak ve Gayrimenkul. 7 yılı aşkın süredir dürüstlük ve şeffaflıkla satılık, kiralık daire, arsa ve ticari mülk danışmanlığı.",
   openGraph: {
     title: "Royal Emlak ve Gayrimenkul",
     description: "Amasya'nın En Güvenilir Emlak Rehberi. Satılık ve Kiralık Gayrimenkul Danışmanlığı.",
-    url: "https://royalemlakamasya.com.tr",
+    url: "https://www.royalemlakamasya.com",
     siteName: "Royal Emlak",
     images: [
       {
