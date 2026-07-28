@@ -7,7 +7,6 @@ const links = [
   { href: "#hakkimizda", label: "Hakkımızda" },
   { href: "#hizmetlerimiz", label: "Hizmetlerimiz" },
   { href: "#blog", label: "Blog" },
-  { href: "#iletisim", label: "İletişim" },
 ];
 
 export default function NavLinks() {

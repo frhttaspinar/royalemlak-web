@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://royalemlak.com.tr"),
+  metadataBase: new URL("https://royalemlakamasya.com.tr"),
   title: "Royal Emlak ve Gayrimenkul | Amasya'nın En Güvenilir Emlak Rehberi",
   description: "Amasya merkezli Royal Emlak ve Gayrimenkul. 7 yılı aşkın süredir dürüstlük ve şeffaflıkla satılık, kiralık daire, arsa ve ticari mülk danışmanlığı.",
   openGraph: {
     title: "Royal Emlak ve Gayrimenkul",
     description: "Amasya'nın En Güvenilir Emlak Rehberi. Satılık ve Kiralık Gayrimenkul Danışmanlığı.",
-    url: "https://royalemlak.com.tr",
+    url: "https://royalemlakamasya.com.tr",
     siteName: "Royal Emlak",
     images: [
       {
@@ -54,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="tr"
-      className={`${inter.variable} scroll-smooth antialiased bg-white text-slate-900`}
+      className={`scroll-smooth antialiased bg-white text-slate-900`}
     >
       <head>
         <script
@@ -62,7 +61,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col font-sans">{children}</body>
+      <body className={`min-h-screen flex flex-col ${playfair.className}`}>{children}</body>
     </html>
   );
 }

@@ -73,7 +73,7 @@ const blogPosts: BlogPost[] = [
     image:
       "https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
     date: "20 Haziran 2026",
-    category: "Rehber",
+    category: "Genel",
   },
 ];
 
@@ -131,13 +131,15 @@ export default function BlogCards() {
             <p className="text-slate-600 mb-6 line-clamp-3 text-sm md:text-base flex-grow">
               {post.excerpt}
             </p>
-            <Link
-              href="#iletisim"
+            <a
+              href="https://wa.me/905443440520"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center text-slate-900 font-semibold hover:text-[#C5A253] transition-colors mt-auto"
             >
               Daha Fazla Bilgi
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </a>
           </div>
         </motion.div>
       ))}

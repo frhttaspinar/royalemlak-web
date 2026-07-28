@@ -7,6 +7,8 @@ import Header from "./components/Header";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ContactActions from "./components/ContactActions";
 import AnimatedAboutImage from "./components/AnimatedAboutImage";
+import Hero09 from "./components/Hero09";
+import DeveloperCredit from "./components/DeveloperCredit";
 
 export default function Home() {
   return (
@@ -15,40 +17,17 @@ export default function Home() {
 
 
       <main className="flex-1 pt-20">
-        {/* 1. Hero Section */}
-        <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center bg-slate-900">
-          <div className="absolute inset-0 overflow-hidden">
-            <Image
-              src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2075&q=80"
-              alt="Amasya satılık lüks daire ve lüks villa"
-              fill
-              priority
-              className="object-cover"
-            />
-            {/* Koyu Yarı Şeffaf Katman (Overlay) */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80"></div>
-          </div>
-          <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center mt-12">
-            <span className="inline-block py-1.5 px-4 rounded-full bg-white/20 text-white text-sm font-medium tracking-widest mb-6 backdrop-blur-md uppercase shadow-xl border border-white/20 [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-              Mükemmeliyetin Adresi
-            </span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-4 tracking-tight max-w-5xl mx-auto [text-shadow:0_4px_10px_rgba(0,0,0,0.9)]">
-              ROYAL EMLAK <span className="text-slate-200 font-extrabold">ve</span> GAYRİMENKUL
-            </h1>
-            <h2 className="text-2xl md:text-4xl font-bold text-white mb-6 tracking-tight max-w-4xl mx-auto [text-shadow:0_4px_8px_rgba(0,0,0,0.8)]">
-              AMASYA'NIN EN GÜVENİLİR EMLAK REHBERİ
-            </h2>
-            <p className="text-lg md:text-2xl text-slate-100 mb-10 font-medium drop-shadow-2xl [text-shadow:0_2px_4px_rgba(0,0,0,0.8)]">
-              7 Yıldan Uzun Süredir Profesyonel Hizmet
-            </p>
-            <Link
-              href="https://wa.me/905443440520"
-              className="inline-flex items-center justify-center bg-white text-slate-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-slate-100 transition-transform shadow-xl hover:scale-105"
-            >
-              Hemen İletişime Geçin
-            </Link>
-          </div>
-        </section>
+        {/* 1. Hero Section (Hero09) */}
+        <Hero09
+          title="ROYAL EMLAK VE GAYRİMENKUL"
+          description="Amasya'da Hayalinizdeki Evi Keşfedin. Royal Emlak güvencesiyle satılık ve kiralık en seçkin portföyler. Yeni yaşam alanınıza ilk adımı atın."
+          heroImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1400&auto=format&fit=crop"
+          heroAlt="Modern minimalist house with clean architecture"
+          bottomTitle="Amasya'nın"
+          bottomTitleLine2="En Güvenilir Emlak Ofisi."
+          bottomText="Şeyhcui Mahallesi'ndeki ofisimizde, şeffaf ve profesyonel hizmet anlayışımızla sizleri çay kahve içmeye bekliyoruz."
+          animation="subtle"
+        />
 
         {/* 2. Hakkımızda */}
         <section id="hakkimizda" className="py-24 bg-white scroll-mt-28">
@@ -57,7 +36,7 @@ export default function Home() {
               <AnimatedAboutImage />
               <div className="order-1 md:order-2">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                  Veri Odaklı Kararlar,<br /> Mimari Hassasiyet.
+                  Amasya'da,<br /> En Güvenilir Emlak Ve Gayrimenkul Ofisi.
                 </h2>
                 <div className="w-20 h-1 bg-slate-900 mb-8"></div>
                 <p className="text-lg text-slate-600 mb-6 leading-relaxed">
@@ -117,7 +96,7 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                Emlak Blogu & Sektörel Analizler
+                Emlak Blogu
               </h2>
               <div className="w-20 h-1 bg-slate-900 mx-auto mb-6"></div>
               <p className="text-lg text-slate-600">
@@ -152,15 +131,19 @@ export default function Home() {
               </p>
 
               <div className="space-y-6 mb-10">
-                <div className="flex items-start">
-                  <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-slate-100 mr-4">
+                <a
+                  href="https://maps.google.com/?q=Şeyhcui,+Poyraz+Sk.+No:+11/A,+Amasya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start group"
+                >
+                  <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-slate-100 mr-4 group-hover:bg-slate-200 transition-colors">
                     <MapPin className="h-5 w-5 text-slate-900" />
                   </span>
-                  <p className="text-slate-700 text-lg pt-1.5">
-                    Şeyhcui, Poyraz Sk. No: 11/A,<br />
-                    05200 Amasya Merkez/Amasya
+                  <p className="text-slate-700 text-lg pt-1.5 group-hover:text-slate-900 transition-colors">
+                    Şeyhcui, Poyraz Sk. No: 11/A, Amasya
                   </p>
-                </div>
+                </a>
                 <div className="flex items-center">
                   <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-slate-100 mr-4">
                     <Phone className="h-5 w-5 text-slate-900" />
@@ -177,7 +160,7 @@ export default function Home() {
             {/* Google Maps iframe */}
             <div className="h-[450px] w-full rounded-3xl overflow-hidden shadow-2xl border border-slate-100 bg-white">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3032.5516086786675!2d35.82390231536717!3d40.65080097933932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40879f94cd4c7d01%3A0xea21b36bb6a0c56!2sRoyal%20Emlak%20Gayrimenkul!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str"
+                src="https://maps.google.com/maps?q=Şeyhcui,%20Poyraz%20Sk.%20No:%2011/A,%20Amasya&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -189,14 +172,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="border-t border-slate-200 mt-20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-500 text-sm text-center md:text-left">
+          <div className="border-t border-slate-200 mt-20 pt-8 flex flex-col justify-center items-center gap-1">
+            <p className="text-slate-500 text-sm text-center">
               © {new Date().getFullYear()} Royal Emlak ve Gayrimenkul. Tüm hakları saklıdır.
             </p>
-            <div className="flex space-x-6">
-              <Link href="#" className="text-sm text-slate-500 hover:text-slate-900 transition-colors">Gizlilik Politikası</Link>
-              <Link href="#" className="text-sm text-slate-500 hover:text-slate-900 transition-colors">Kullanım Koşulları</Link>
-            </div>
+            <DeveloperCredit />
           </div>
         </div>
       </footer>

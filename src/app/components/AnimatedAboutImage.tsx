@@ -11,13 +11,18 @@ export default function AnimatedAboutImage() {
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       whileHover={{ scale: 1.02 }}
-      className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl order-2 md:order-1 bg-slate-50 border border-slate-100 p-12 cursor-pointer"
+      className="relative h-[400px] md:h-[500px] order-2 md:order-1 cursor-pointer flex justify-center items-center"
+      style={{
+        WebkitMaskImage: 'radial-gradient(ellipse at center, black 25%, transparent 95%)',
+        maskImage: 'radial-gradient(ellipse at center, black 25%, transparent 95%)'
+      }}
     >
+      <div className="absolute inset-0 bg-slate-900/5 z-10 hover:bg-transparent transition-colors duration-500 rounded-3xl"></div>
       <Image
-        src="/royallogo.png"
-        alt="Royal Emlak ve Gayrimenkul Amasya"
+        src="/2.png"
+        alt="Amasya Satılık Çiçekli Bahçeli Ev"
         fill
-        className="object-contain p-8 md:p-16"
+        className="object-cover transition-transform duration-700 hover:scale-105 rounded-3xl"
       />
     </motion.div>
   );
